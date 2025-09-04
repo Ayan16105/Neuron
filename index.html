@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuron Medical Hostel - Fostering Future Healers</title>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #ffd700; /* Gold/Amber */
+            --primary-hover-color: #ffe84d; /* Lighter Gold */
+            --secondary-color: #f0f4f8; /* Light Gray Blue */
+            --background-color: #ffffff;
+            --dark-background: #1a202c; /* Dark Gray for some sections */
+            --text-primary: #2d3748; /* Darker Gray */
+            --text-secondary: #4a5568; /* Medium Gray */
+            --text-light: #e2e8f0; /* Light Gray for dark sections */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .menu-open {
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        /* Custom styles for animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animate-delay-1 { transition-delay: 100ms; }
+        .animate-delay-2 { transition-delay: 200ms; }
+        .animate-delay-3 { transition-delay: 300ms; }
+        .animate-delay-4 { transition-delay: 400ms; }
+
+        /* Custom shapes */
+        .founder-clip-path {
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+        }
+        @media (min-width: 768px) {
+            .hero-clip-path {
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="relative flex size-full min-h-screen flex-col bg-[var(--background-color)] justify-between">
+    
+    <header class="sticky top-0 z-50 flex items-center justify-between bg-white/90 p-4 backdrop-blur-sm shadow-sm transition-shadow duration-300" id="header">
+        <a href="#" class="text-2xl font-extrabold tracking-tight text-[var(--text-primary)]">
+            NEURON<span class="text-[var(--primary-color)]">.</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="#about" class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors">About</a>
+            <a href="#features" class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors">Features</a>
+            <a href="#gallery" class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors">Gallery</a>
+            <a href="#testimonials" class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors">Testimonials</a>
+            <a href="#contact" class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="#booking" class="hidden sm:inline-block bg-[var(--primary-color)] text-[var(--text-primary)] py-2 px-5 rounded-full font-semibold hover:bg-[var(--primary-hover-color)] transition-all duration-300 transform hover:scale-105">Book Now</a>
+            <button id="menu-button" class="md:hidden flex max-w-[480px] cursor-pointer items-center justify-center rounded-full h-12 w-12 bg-transparent text-[var(--text-primary)] transition-transform duration-300 ease-in-out">
+                <span id="menu-icon" class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full bg-black/40 z-40 translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="absolute top-0 right-0 h-full w-3/4 max-w-sm bg-white shadow-xl flex flex-col p-8 pt-24">
+            <a href="#about" class="mobile-menu-link text-xl font-semibold text-gray-800 py-4 border-b">About</a>
+            <a href="#features" class="mobile-menu-link text-xl font-semibold text-gray-800 py-4 border-b">Features</a>
+            <a href="#gallery" class="mobile-menu-link text-xl font-semibold text-gray-800 py-4 border-b">Gallery</a>
+            <a href="#testimonials" class="mobile-menu-link text-xl font-semibold text-gray-800 py-4 border-b">Testimonials</a>
+            <a href="#contact" class="mobile-menu-link text-xl font-semibold text-gray-800 py-4 border-b">Contact</a>
+            <a href="#booking" class="mobile-menu-link mt-8 bg-[var(--primary-color)] text-[var(--text-primary)] py-3 px-6 rounded-full font-bold text-center">Book Your Stay</a>
+        </div>
+    </div>
+
+    <main>
+        <section class="relative bg-[var(--dark-background)] text-white pt-16 pb-20 md:pb-32 lg:pt-24 md:hero-clip-path overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1548695577-d5dc27806f71?q=80&w=2070&auto=format&fit=crop');"></div>
+            <div class="relative z-10 container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden mb-6 border-4 border-[var(--primary-color)] shadow-xl animate-on-scroll">
+                        <img src="head.png" alt="Dr. Arya Sharma, Founder" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-[var(--primary-color)] opacity-10 mix-blend-multiply"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[var(--primary-color)] animate-on-scroll animate-delay-1">Dr. DC Bagraniya</h3>
+                    <p class="text-gray-300 mb-6 animate-on-scroll animate-delay-2">Founder & Visionary, Neuron Medical Hostel</p>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white animate-on-scroll animate-delay-3">
+                        Fostering <span class="text-[var(--primary-color)]">Future Healers</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 max-w-xl mb-8 animate-on-scroll animate-delay-4">
+                        Driven by a passion for medical education and student well-being, Dr. DC Bagraniya established Neuron Medical Hostel to provide an unparalleled living and learning environment for aspiring medical professionals.
+                    </p>
+                    <a href="#booking" class="bg-[var(--primary-color)] text-[var(--text-primary)] py-3 px-8 rounded-full font-bold text-lg hover:bg-[var(--primary-hover-color)] transition-all duration-300 transform hover:scale-105 animate-on-scroll animate-delay-4">
+                        Book Your Stay
+                    </a>
+                </div>
+
+                <div class="hidden md:flex flex-col gap-6 p-8 rounded-xl bg-white/5 shadow-lg backdrop-blur-sm animate-on-scroll animate-delay-3" style="align-self: flex-start; margin-top: 4rem;">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="warden.jpg" alt="Hostel room" class="w-full h-40 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                        <img src="double2.jpg" alt="Study area" class="w-full h-40 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                        <img src="triple.jpg" alt="Common Area" class="w-full h-40 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                        <img src="alumni2.png" alt="Medical student" class="w-full h-40 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="flex flex-col gap-16 px-4 py-24 bg-[var(--background-color)] @container sm:px-8 lg:px-16 relative">
+            <div class="absolute inset-y-0 left-0 w-1/4 bg-[var(--primary-color)] opacity-5 md:w-1/6"></div>
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+                <div class="md:w-1/2 animate-on-scroll">
+                    <img src="building.png" alt="Medical building exterior" class="rounded-3xl shadow-2xl w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500">
+                </div>
+                <div class="md:w-1/2 flex flex-col gap-6 animate-on-scroll animate-delay-2">
+                    <h2 class="text-4xl font-bold text-[var(--text-primary)]">About Neuron Medical Hostel</h2>
+                    <p class="text-[var(--text-secondary)] text-lg">
+                        Neuron Medical Hostel is more than just a place to stay; it's a vibrant community crafted exclusively for medical students and professionals. Located in the heart of Ajmer, our hostel offers a conducive environment that balances rigorous study with essential relaxation.
+                    </p>
+                    <p class="text-[var(--text-secondary)] text-lg">
+                        We understand the unique demands of the medical field. That's why we've integrated state-of-the-art study facilities, nutritious dining options, and a supportive network to ensure every resident can excel.
+                    </p>
+                    <a href="#features" class="inline-block bg-[var(--text-primary)] text-white py-3 px-8 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105">
+                        Discover Our Vision
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="flex flex-col gap-16 px-4 py-24 bg-[var(--secondary-color)] @container sm:px-8 lg:px-16">
+            <div class="flex flex-col gap-4 text-center animate-on-scroll">
+                <h2 class="text-[var(--text-primary)] text-4xl font-bold tracking-tight max-w-2xl mx-auto">Features Designed for Your Success</h2>
+                <p class="text-[var(--text-secondary)] text-xl font-normal max-w-3xl mx-auto">From focused study to holistic well-being, every aspect of Neuron is tailored for aspiring medical professionals.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="flex flex-col gap-5 rounded-3xl bg-white p-8 items-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll">
+                    <div class="bg-[var(--primary-color)] p-5 rounded-full shadow-md">
+                        <span class="material-symbols-outlined text-4xl text-[var(--dark-background)]">library_books</span>
+                    </div>
+                    <h3 class="text-[var(--text-primary)] text-2xl font-bold">Advanced Library & Study Lounges</h3>
+                    <p class="text-[var(--text-secondary)] text-base">Ergonomic seating, high-speed Wi-Fi, and extensive medical resources to support your academic journey.</p>
+                </div>
+                <div class="flex flex-col gap-5 rounded-3xl bg-white p-8 items-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll animate-delay-1">
+                    <div class="bg-[var(--primary-color)] p-5 rounded-full shadow-md">
+                        <span class="material-symbols-outlined text-4xl text-[var(--dark-background)]">nutrition</span>
+                    </div>
+                    <h3 class="text-[var(--text-primary)] text-2xl font-bold">Nutritious Dining & Cafe</h3>
+                    <p class="text-[var(--text-secondary)] text-base">Balanced meals prepared by expert chefs, with options catering to various dietary needs, plus a cozy cafe for quick bites.</p>
+                </div>
+                <div class="flex flex-col gap-5 rounded-3xl bg-white p-8 items-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll animate-delay-2">
+                    <div class="bg-[var(--primary-color)] p-5 rounded-full shadow-md">
+                        <span class="material-symbols-outlined text-4xl text-[var(--dark-background)]">local_hospital</span>
+                    </div>
+                    <h3 class="text-[var(--text-primary)] text-2xl font-bold">Proximity to Medical Institutions</h3>
+                    <p class="text-[var(--text-secondary)] text-base">Strategically located just minutes away from Ajmer's leading medical colleges and hospitals.</p>
+                </div>
+                <div class="flex flex-col gap-5 rounded-3xl bg-white p-8 items-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll animate-delay-3">
+                    <div class="bg-[var(--primary-color)] p-5 rounded-full shadow-md">
+                        <span class="material-symbols-outlined text-4xl text-[var(--dark-background)]">wifi</span>
+                    </div>
+                    <h3 class="text-[var(--text-primary)] text-2xl font-bold">Seamless Connectivity</h3>
+                    <p class="text-[var(--text-secondary)] text-base">Uninterrupted high-speed internet across the premises to keep you connected for studies and leisure.</p>
+                </div>
+                <div class="flex flex-col gap-5 rounded-3xl bg-white p-8 items-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll animate-delay-4">
+                    <div class="bg-[var(--primary-color)] p-5 rounded-full shadow-md">
+                        <span class="material-symbols-outlined text-4xl text-[var(--dark-background)]">directions_run</span>
+                    </div>
+                    <h3 class="text-[var(--text-primary)] text-2xl font-bold">Fitness & Recreation Zones</h3>
+                    <p class="text-[var(--text-secondary)] text-base">Modern gym, indoor games, and green spaces for relaxation and physical well-being.</p>
+                </div>
+                <div class="flex flex-col gap-5 rounded-3xl bg-white p-8 items-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll animate-delay-5">
+                    <div class="bg-[var(--primary-color)] p-5 rounded-full shadow-md">
+                        <span class="material-symbols-outlined text-4xl text-[var(--dark-background)]">lightbulb</span>
+                    </div>
+                    <h3 class="text-[var(--text-primary)] text-2xl font-bold">Mentorship & Peer Support</h3>
+                    <p class="text-[var(--text-secondary)] text-base">Access to experienced mentors and a thriving peer community for guidance and shared learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="flex flex-col gap-16 px-4 py-24 @container sm:px-8 lg:px-16">
+            <div class="flex flex-col gap-4 text-center animate-on-scroll">
+                <h2 class="text-[var(--text-primary)] text-4xl font-bold tracking-tight max-w-2xl mx-auto">A Glimpse Inside Neuron</h2>
+                <p class="text-[var(--text-secondary)] text-xl font-normal max-w-3xl mx-auto">Experience comfort, community, and cutting-edge facilities tailored for your success.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg animate-on-scroll">
+                    <img src="double.jpg" alt="Spacious Hostel Room" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Spacious Living</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg animate-on-scroll animate-delay-1">
+                    <img src="bathroom.jpg" alt="Modern Study Area" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Focused Study Zones</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg animate-on-scroll animate-delay-2">
+                    <img src="exterior.jpg" alt="Dining Hall" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Nutritious Dining</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg animate-on-scroll animate-delay-3">
+                    <img src="alumni1.png" alt="Common Lounge" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Relaxing Lounges</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="flex flex-col gap-16 px-4 py-24 bg-[var(--dark-background)] text-white @container sm:px-8 lg:px-16">
+            <div class="flex flex-col gap-4 text-center animate-on-scroll">
+                <h2 class="text-white text-4xl font-bold tracking-tight max-w-2xl mx-auto">Hear From Our Residents</h2>
+                <p class="text-gray-300 text-xl font-normal max-w-3xl mx-auto">Authentic experiences from the medical students and professionals who call Neuron their home.</p>
+            </div>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <div id="testimonial-carousel" class="flex overflow-hidden relative">
+                    <div class="testimonial-item flex-shrink-0 w-full p-8 bg-gray-800 rounded-2xl shadow-xl flex flex-col items-center text-center animate-on-scroll">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Resident Avatar" class="w-24 h-24 rounded-full mb-6 border-4 border-[var(--primary-color)]">
+                        <p class="text-gray-300 text-lg italic mb-6">
+                            "Neuron Medical Hostel provided the perfect environment for my final year. The quiet study areas, delicious food, and supportive community made all the difference. Highly recommend for any serious medical student."
+                        </p>
+                        <h4 class="text-[var(--primary-color)] text-xl font-semibold">Dr. Priya Singh</h4>
+                        <p class="text-gray-400 text-sm">Medical Resident, AIIMS Ajmer</p>
+                    </div>
+                    <div class="testimonial-item flex-shrink-0 w-full p-8 bg-gray-800 rounded-2xl shadow-xl flex flex-col items-center text-center animate-on-scroll hidden">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Resident Avatar" class="w-24 h-24 rounded-full mb-6 border-4 border-[var(--primary-color)]">
+                        <p class="text-gray-300 text-lg italic mb-6">
+                            "The facilities here are top-notch, especially the high-speed internet and the library. It's a professional and friendly atmosphere, ideal for long study sessions and unwinding afterward."
+                        </p>
+                        <h4 class="text-[var(--primary-color)] text-xl font-semibold">Arjun Kumar</h4>
+                        <p class="text-gray-400 text-sm">MBBS Student, Year 3</p>
+                    </div>
+                    <div class="testimonial-item flex-shrink-0 w-full p-8 bg-gray-800 rounded-2xl shadow-xl flex flex-col items-center text-center animate-on-scroll hidden">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Resident Avatar" class="w-24 h-24 rounded-full mb-6 border-4 border-[var(--primary-color)]">
+                        <p class="text-gray-300 text-lg italic mb-6">
+                            "The sense of community at Neuron is truly special. I've made lifelong friends and found immense support during challenging times. It truly feels like a second home."
+                        </p>
+                        <h4 class="text-[var(--primary-color)] text-xl font-semibold">Dr. Sana Khan</h4>
+                        <p class="text-gray-400 text-sm">PG Student, General Surgery</p>
+                    </div>
+                </div>
+                <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/20 p-3 rounded-full text-white hover:bg-white/40 transition-colors duration-300 transform -translate-x-full md:-translate-x-1/2">
+                    <span class="material-symbols-outlined">arrow_back_ios</span>
+                </button>
+                <button id="next-testimonial" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/20 p-3 rounded-full text-white hover:bg-white/40 transition-colors duration-300 transform translate-x-full md:translate-x-1/2">
+                    <span class="material-symbols-outlined">arrow_forward_ios</span>
+                </button>
+            </div>
+        </section>
+
+
+        <section id="booking" class="flex flex-col items-center justify-center gap-8 px-4 py-24 bg-[var(--background-color)] @container sm:px-8 lg:px-16 text-center">
+            <div class="animate-on-scroll">
+                <h2 class="text-[var(--text-primary)] text-4xl font-bold tracking-tight max-w-3xl mx-auto">Ready to Ignite Your Future?</h2>
+                <p class="text-[var(--text-secondary)] text-xl font-normal max-w-4xl mx-auto mt-4">Join the Neuron Medical Hostel community and experience an environment where academic excellence meets holistic well-being.</p>
+            </div>
+            <div class="animate-on-scroll animate-delay-1">
+                <a href="#" class="bg-[var(--primary-color)] text-[var(--text-primary)] py-4 px-12 rounded-full font-bold text-xl hover:bg-[var(--primary-hover-color)] transition-all duration-300 transform hover:scale-105 shadow-xl">
+                    Secure Your Spot Today
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="flex flex-col gap-10 px-6 py-16 text-center bg-gray-900 text-gray-400 @container">
+        <div class="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto w-full gap-8">
+            <div class="flex flex-col items-center md:items-start md:w-1/3">
+                <a href="#" class="text-3xl font-extrabold tracking-tight text-white mb-4">
+                    NEURON<span class="text-[var(--primary-color)]">.</span>
+                </a>
+                <p class="text-gray-400 text-sm max-w-xs">
+                    Fostering Future Healers through a supportive and empowering living environment.
+                </p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-start md:w-1/3">
+                <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                <nav class="flex flex-col gap-2">
+                    <a class="text-base hover:text-[var(--primary-color)] transition-colors" href="#about">About Us</a>
+                    <a class="text-base hover:text-[var(--primary-color)] transition-colors" href="#features">Features</a>
+                    <a class="text-base hover:text-[var(--primary-color)] transition-colors" href="#gallery">Gallery</a>
+                    <a class="text-base hover:text-[var(--primary-color)] transition-colors" href="#testimonials">Testimonials</a>
+                </nav>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start md:w-1/3">
+                <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                <p class="text-base mb-2">123 Medical Enclave, Ajmer, Rajasthan</p>
+                <p class="text-base mb-2">Email: <a href="mailto:info@neuronhostel.com" class="hover:text-[var(--primary-color)]">info@neuronhostel.com</a></p>
+                <p class="text-base">Phone: <a href="tel:+919876543210" class="hover:text-[var(--primary-color)]">+91 98765 43210</a></p>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-700 pt-8 mt-8">
+            <p class="text-sm font-normal leading-normal">© 2025 Neuron Medical Hostel. All rights reserved.</p>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const body = document.body;
+        const menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('translate-x-full');
+            body.classList.toggle('menu-open');
+            if (body.classList.contains('menu-open')) {
+                menuIcon.textContent = 'close';
+            } else {
+                menuIcon.textContent = 'menu';
+            }
+        });
+        
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                body.classList.remove('menu-open');
+                menuIcon.textContent = 'menu';
+            });
+        });
+
+        // Scroll Animations
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once visible if you want the animation to play only once
+                    // observer.unobserve(entry.target); 
+                } else {
+                    // Optional: Remove 'is-visible' if you want animations to replay on scroll out/in
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.2 // Adjust as needed: percentage of the element visible to trigger
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Sticky header shadow on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Adjust scroll threshold
+                header.classList.add('shadow-lg');
+                header.classList.add('bg-white'); // Ensure solid background when sticky
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.remove('bg-white'); // Revert to semi-transparent
+                header.classList.add('bg-white/90');
+            }
+        });
+
+        // Testimonial Carousel
+        const carousel = document.getElementById('testimonial-carousel');
+        const testimonialItems = document.querySelectorAll('.testimonial-item');
+        const prevButton = document.getElementById('prev-testimonial');
+        const nextButton = document.getElementById('next-testimonial');
+        let currentIndex = 0;
+
+        function showTestimonial(index) {
+            testimonialItems.forEach((item, i) => {
+                if (i === index) {
+                    item.classList.remove('hidden');
+                    item.classList.add('is-visible'); // Trigger animation for new item
+                } else {
+                    item.classList.add('hidden');
+                    item.classList.remove('is-visible');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + testimonialItems.length) % testimonialItems.length;
+            showTestimonial(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % testimonialItems.length;
+            showTestimonial(currentIndex);
+        });
+
+        // Auto-advance carousel
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % testimonialItems.length;
+            showTestimonial(currentIndex);
+        }, 8000); // Change testimonial every 8 seconds
+
+        showTestimonial(currentIndex); // Initialize carousel
+    });
+</script>
+
+</body>
+</html>
