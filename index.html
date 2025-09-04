@@ -238,48 +238,6 @@
             </div>
         </section>
 
-        <section id="testimonials" class="flex flex-col gap-16 px-4 py-24 bg-[var(--dark-background)] text-white @container sm:px-8 lg:px-16">
-            <div class="flex flex-col gap-4 text-center animate-on-scroll">
-                <h2 class="text-white text-4xl font-bold tracking-tight max-w-2xl mx-auto">Hear From Our Residents</h2>
-                <p class="text-gray-300 text-xl font-normal max-w-3xl mx-auto">Authentic experiences from the medical students and professionals who call Neuron their home.</p>
-            </div>
-            
-            <div class="relative max-w-4xl mx-auto overflow-hidden">
-                <div id="testimonial-carousel" class="flex">
-                    <div class="testimonial-item flex-shrink-0 w-full p-8 bg-gray-800 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Resident Avatar" class="w-24 h-24 rounded-full mb-6 border-4 border-[var(--primary-color)]">
-                        <p class="text-gray-300 text-lg italic mb-6">
-                            "Neuron Medical Hostel provided the perfect environment for my final year. The quiet study areas, delicious food, and supportive community made all the difference. Highly recommend for any serious medical student."
-                        </p>
-                        <h4 class="text-[var(--primary-color)] text-xl font-semibold">Dr. Priya Singh</h4>
-                        <p class="text-gray-400 text-sm">Medical Resident, AIIMS Ajmer</p>
-                    </div>
-                    <div class="testimonial-item flex-shrink-0 w-full p-8 bg-gray-800 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Resident Avatar" class="w-24 h-24 rounded-full mb-6 border-4 border-[var(--primary-color)]">
-                        <p class="text-gray-300 text-lg italic mb-6">
-                            "The facilities here are top-notch, especially the high-speed internet and the library. It's a professional and friendly atmosphere, ideal for long study sessions and unwinding afterward."
-                        </p>
-                        <h4 class="text-[var(--primary-color)] text-xl font-semibold">Arjun Kumar</h4>
-                        <p class="text-gray-400 text-sm">MBBS Student, Year 3</p>
-                    </div>
-                    <div class="testimonial-item flex-shrink-0 w-full p-8 bg-gray-800 rounded-2xl shadow-xl flex flex-col items-center text-center">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Resident Avatar" class="w-24 h-24 rounded-full mb-6 border-4 border-[var(--primary-color)]">
-                        <p class="text-gray-300 text-lg italic mb-6">
-                            "The sense of community at Neuron is truly special. I've made lifelong friends and found immense support during challenging times. It truly feels like a second home."
-                        </p>
-                        <h4 class="text-[var(--primary-color)] text-xl font-semibold">Dr. Sana Khan</h4>
-                        <p class="text-gray-400 text-sm">PG Student, General Surgery</p>
-                    </div>
-                </div>
-                <button id="prev-testimonial" class="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 bg-white/20 p-3 rounded-full text-white hover:bg-white/40 transition-colors duration-300 transform sm:-translate-x-1/2">
-                    <span class="material-symbols-outlined">arrow_back_ios</span>
-                </button>
-                <button id="next-testimonial" class="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 bg-white/20 p-3 rounded-full text-white hover:bg-white/40 transition-colors duration-300 transform sm:translate-x-1/2">
-                    <span class="material-symbols-outlined">arrow_forward_ios</span>
-                </button>
-            </div>
-        </section>
-
 
         <section id="booking" class="flex flex-col items-center justify-center gap-8 px-4 py-24 bg-[var(--background-color)] @container sm:px-8 lg:px-16 text-center">
             <div class="animate-on-scroll">
@@ -374,32 +332,7 @@
             header.classList.toggle('bg-white/90', window.scrollY <= 50);
         });
 
-        // Testimonial Carousel
-        const carousel = document.getElementById('testimonial-carousel');
-        const prevButton = document.getElementById('prev-testimonial');
-        const nextButton = document.getElementById('next-testimonial');
-        let currentIndex = 0;
-        const totalItems = carousel.children.length;
-
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            updateCarousel();
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateCarousel();
-        });
-
-        // Simple transition for the carousel items
-        Array.from(carousel.children).forEach(item => {
-            item.style.transition = 'opacity 0.5s ease-in-out';
-        });
-        carousel.style.transition = 'transform 0.5s ease-in-out';
+    
     });
 </script>
 
